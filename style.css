@@ -1,3 +1,6 @@
+html {
+    font-family: 'Tangerine', sans-serif;
+}
 @keyframes fadeinall {
     0% {
       opacity: 1; }
