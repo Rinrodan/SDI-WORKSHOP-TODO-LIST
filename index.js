@@ -60,3 +60,49 @@ let bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
     //bind checkBoxEventHandler to checkbox
     checkBox.onchange = checkBoxEventHandler;
 }
+
+let editTask = function() {
+    let listItem = this.parentNode;
+    let editInput = listItem.querySelector("input[type=text]");
+    let label = listItem.querySelector("label");
+    let containsClass = listItem.classList.contains("editMode");
+
+    // if the listItem element contains the editMode class
+    if (containsClass) {
+        //Switch from .editMode
+        //label text become the input's value
+        label.innerText = editInput.value;
+    } else {
+        //Switch to .editMode
+        //input value becomes the labels text
+        editInput.value = label.innerText;
+    }
+    //Toggle .editMode class on and off
+    listItem.classList.toggle("editMode");
+}
+
+let deleteTask = function() {
+    let listItem = this.parentNode;
+    let ul = listItem.parentNode;
+    ul.removeChild(listItem);
+}
+
+let taskCompleted = function() {
+    //When the Checkbox is checked 
+    //Append the task list item to the #completed-tasks ul
+    let listItem = this.parentNode;
+    completedTasks.appendChild(listItem);
+    bindTaskEvents(listItem, taskIncomplete);
+}
+let taskIncomplete = function() {
+    //When the checkbox is unchecked appendTo #incomplete-tasks
+    let listItem = this.parentNode;
+    incompleteTasks.appendChild(listItem);
+    bindTaskEvents(listItem, taskCompleted);
+}
+
+let clear = function() {
+    incompleteTasks.innerHTML = "";
+    completedTasks.innerHTML = "";
+}
+clearButton.addEventListener('click', clear);
