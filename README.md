@@ -1,4 +1,6 @@
 # SDI-WORKSHOP-TODO-LIST
+
+![|50](https://www.templateral.com/wp-content/uploads/To-Do-List-Printable-Template-Sample.jpg)
 ## Requirements
 
 -   In this application you will create a to-do list application that can do the following:
